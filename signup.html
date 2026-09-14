@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vishwas WhatsApp Setup</title>
+</head>
+
+<body>
+
+<h1>Vishwas WhatsApp Business Platform Setup</h1>
+
+<button onclick="launchWhatsAppSignup()">
+  Connect WhatsApp Business
+</button>
+
+<pre id="status"></pre>
+
+<script>
+  const APP_ID = "2017002025675418";
+  const CONFIG_ID = "1444285844213981";
+
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: APP_ID,
+      cookie: true,
+      xfbml: true,
+      version: "v26.0"
+    });
+
+    document.getElementById("status").textContent =
+      "Meta SDK loaded. Ready to connect.";
+  };
+
+  (function (d, s, id) {
+    const fjs = d.getElementsByTagName(s)[0];
+
+    if (d.getElementById(id)) return;
+
+    const js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, "script", "facebook-jssdk"));
+
+
+  function launchWhatsAppSignup() {
+
+    FB.login(
+      function (response) {
+
+        console.log("Login response:", response);
+
+        if (response.authResponse) {
+
+          const code = response.authResponse.code;
+
+          document.getElementById("status").textContent =
+            "Embedded Signup completed.\nAuthorization code received.";
+
+          console.log("Authorization code:", code);
+
+        } else {
+
+          document.getElementById("status").textContent =
+            "Signup was cancelled or not completed.";
+
+        }
+      },
+      {
+        config_id: CONFIG_ID,
+        response_type: "code",
+        override_default_response_type: true
+      }
+    );
+  }
+
+
+  window.addEventListener("message", function (event) {
+
+    if (
+      event.origin !== "https://www.facebook.com" &&
+      event.origin !== "https://web.facebook.com"
+    ) {
+      return;
+    }
+
+    try {
+
+      const data =
+        typeof event.data === "string"
+          ? JSON.parse(event.data)
+          : event.data;
+
+      if (data.type === "WA_EMBEDDED_SIGNUP") {
+
+        console.log("WhatsApp Embedded Signup event:", data);
+
+        document.getElementById("status").textContent +=
+          "\n\nWhatsApp event:\n" +
+          JSON.stringify(data, null, 2);
+      }
+
+    } catch (err) {
+      // Ignore unrelated Meta messages.
+    }
+
+  });
+</script>
+
+</body>
+</html>
