@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Vishwas Billing accesses, uses and stores Google user data.">
+  <link rel="canonical" href="https://yashowardhansinghtomar.github.io/vishwas-whatsapp/billing/privacy.html">
+  <link rel="icon" href="../img/favicon-64.png" type="image/png">
+  <link rel="stylesheet" href="billing.css">
+  <title>Privacy policy | Vishwas Billing</title>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="../">
+        <img src="../img/logo-192.png" alt="" width="36" height="36">
+        <span>New Vishwas Enterprises</span>
+      </a>
+      <nav aria-label="Billing information">
+        <a href="./">Vishwas Billing</a>
+        <a href="terms.html">Terms of use</a>
+      </nav>
+    </div>
+  </header>
+  <main class="shell article">
+    <h1>Vishwas Billing privacy policy</h1>
+    <p class="lead">New Vishwas Enterprises operates Vishwas Billing as a private desktop app for the shop’s billing records.</p>
+
+    <h2>Permission and data accessed</h2>
+    <p>The shop owner can authorize Gmail read-only access through Google. Google grants this permission at the mailbox level. The app checks the email address to confirm it is connected to the shop mailbox, verifies the dedicated <strong>Vishwas Billing</strong> label, and searches that label for billing PDFs or Meta business receipt messages. During setup it reads the shop’s label names and IDs to locate the dedicated label.</p>
+    <p>For matching messages, the app fetches the message details, which can include Gmail message IDs, labels, timestamps, headers, body content and attachment details. It reads the body of supported Meta Ads receipts and downloads PDFs from matching messages for validation. Billing data can include account, invoice and transaction references, amounts, taxes and payment references. All mailbox operations use read-only Gmail API methods.</p>
+
+    <h2>Use and storage</h2>
+    <p>The app uses Gmail data to identify and validate billing evidence, avoid counting the same document twice, compare bills and payments, and prepare a local report for the shop owner. The Windows app saves the refresh credential and label ID locally so it can run after the initial authorization. The local billing ledger retains accepted PDF files, decoded text and identifiers from accepted receipts, extracted billing fields, dates, and evidence hashes. Unsupported evidence is rejected. The app can retain its hash and rejection reason.</p>
+    <p>The ledger and generated HTML, JSON and CSV reports are kept on the shop computer under its Windows user account. Copies remain there until they are removed. Removing a Gmail label or revoking access leaves existing local copies in place.</p>
+
+    <h2>Sharing and limited use</h2>
+    <p>The Windows app communicates with Google to authorize access and retrieve the selected billing evidence. The retrieved evidence stays on the shop computer. New Vishwas Enterprises limits its use of the Gmail data to the shop owner’s billing records.</p>
+    <p>Vishwas Billing uses information received from Google APIs in accordance with the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its <a href="https://developers.google.com/workspace/workspace-api-user-data-developer-policy#limited_use_of_user_data">Limited Use requirements</a>.</p>
+
+    <h2>Disconnect Gmail or remove local copies</h2>
+    <p>The shop owner can revoke Vishwas Billing’s access from <a href="https://myaccount.google.com/connections">Google Account connections</a>. This stops future Gmail access. To remove the saved connection from the shop computer, delete the app’s local Gmail credential. The default location is <code>%LOCALAPPDATA%\Vishwas\Billing\credentials\gmail_authorized_user.json</code>.</p>
+    <p>Contact shop support for help accessing the local HTML, JSON or CSV report or removing stored copies. To clear the app’s complete local billing history, stop the billing task and remove the local billing database, any database sidecar files, and the generated reports from <code>%LOCALAPPDATA%\Vishwas\Billing</code>. This also removes billing history from other sources kept in those files. Review applicable accounting retention requirements before removing records and review any copies exported separately. Gmail originals stay in Gmail. If the connection remains active, later runs can import messages still carrying the billing label.</p>
+
+    <h2>Contact</h2>
+    <p>New Vishwas Enterprises, Modern Chauraha, Sanwer Road, Indore, Madhya Pradesh 452015, India. For questions or help managing billing data, call <a href="tel:+919977309309">+91 99773 09309</a>.</p>
+  </main>
+  <footer class="shell site-footer">
+    <a href="./">Vishwas Billing</a>
+    <span>New Vishwas Enterprises · Indore, India</span>
+  </footer>
+</body>
+</html>
